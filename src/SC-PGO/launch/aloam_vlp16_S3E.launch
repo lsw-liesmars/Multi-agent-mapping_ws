@@ -4,7 +4,7 @@
     <arg name="use_quatro" default="true"/>
     <arg name="use_intraloop" default="true"/>
 
-    <param name="deepmodelpath" type="string" value="/home/lsw/lvshangwei/cyw_handover/inhouse_best_model_RI_V6_temp.pt"/>
+    <param name="deepmodelpath" type="string" value="/home/lsw/lvshangwei/cyw_handover/inhouse_best_model_RI_V6.pt"/>
     <param name="terminate_at_end" type="bool" value="$(arg terminate_at_end)"/>
     <param name="scan_line" type="int" value="16" />
 
