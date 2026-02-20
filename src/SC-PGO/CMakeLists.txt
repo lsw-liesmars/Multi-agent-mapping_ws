@@ -24,7 +24,7 @@ find_package(OpenMP REQUIRED)
 find_package(PCL REQUIRED)
 find_package(Boost REQUIRED COMPONENTS timer)
 find_package(Eigen3 3.2 QUIET REQUIRED NO_MODULE)
-set(GTSAM_DIR "/home/cyw/Documents/slam_devel/gtsam/install/lib/cmake/GTSAM")
+set(GTSAM_DIR "/home/lsw/gtsam/build")
 find_package(GTSAM REQUIRED QUIET)
 find_package(Ceres REQUIRED)
 
@@ -77,7 +77,7 @@ target_link_libraries(alaserOdometry ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERE
 add_executable(alaserMapping src/laserMapping.cpp)
 target_link_libraries(alaserMapping ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES})
 
-find_package(Torch REQUIRED PATHS "/home/cyw/Documents/libtorch/share/cmake/Torch")
+find_package(Torch REQUIRED PATHS "/home/lsw/libtorch/share/cmake/Torch")
 
 add_executable(alaserPGO 
   src/laserPosegraphOptimization.cpp
@@ -86,6 +86,7 @@ add_executable(alaserPGO
   include/quatro/quatro.hpp
   ${teaser_src}
 )
+add_dependencies(alaserPGO ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_compile_options(alaserPGO 
   PRIVATE ${OpenMP_CXX_FLAGS}
 )
@@ -106,6 +107,7 @@ add_executable(multirobotPGO
   src/CSF_filter.cpp
   ${teaser_src}
 )
+add_dependencies(multirobotPGO ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_compile_options(multirobotPGO 
   PRIVATE ${OpenMP_CXX_FLAGS}
 )
