@@ -24,8 +24,7 @@ find_package(OpenMP REQUIRED)
 find_package(PCL REQUIRED)
 find_package(Boost REQUIRED COMPONENTS timer)
 find_package(Eigen3 3.2 QUIET REQUIRED NO_MODULE)
-set(GTSAM_DIR "/home/lsw/gtsam/build")
-find_package(GTSAM REQUIRED QUIET)
+find_package(GTSAM REQUIRED)
 find_package(Ceres REQUIRED)
 
 include_directories(
@@ -34,7 +33,7 @@ include_directories(
   ${PCL_INCLUDE_DIRS}
   ${CERES_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
-  ${GTSAM_INCLUDE_DIR}
+  ${GTSAM_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIR}
 )
 # 添加CSF库的包含目录
@@ -77,7 +76,7 @@ target_link_libraries(alaserOdometry ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERE
 add_executable(alaserMapping src/laserMapping.cpp)
 target_link_libraries(alaserMapping ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES})
 
-find_package(Torch REQUIRED PATHS "/home/lsw/libtorch/share/cmake/Torch")
+find_package(Torch REQUIRED PATHS "/home/lvshangwei/libtorch/share/cmake/Torch")
 
 add_executable(alaserPGO 
   src/laserPosegraphOptimization.cpp
